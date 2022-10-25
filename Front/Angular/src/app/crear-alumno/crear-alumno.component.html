@@ -1,0 +1,95 @@
+<div class="contenedor">
+    <mat-card class="matcard">
+        <h1>{{title}}</h1>
+        <form [formGroup]="form">
+            <div class="divInput">
+                <mat-icon class="icono" aria-label="Side nav toggle icon">person</mat-icon>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input [disabled]="isLoading" matInput formControlName="nombres" />
+                </mat-form-field>
+            </div>
+
+            <div class="divInput">
+                <mat-icon class="icono" aria-label="Side nav toggle icon">person</mat-icon>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Apellidos</mat-label>
+                    <input [disabled]="isLoading" matInput formControlName="apellidos" />
+                </mat-form-field>
+            </div>
+
+
+
+            <div style="margin-left: 35px;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Carrera</mat-label>
+                    <mat-select [disabled]="isLoading" formControlName="carrera" class="form-control" name="carrera">
+                        <mat-option *ngFor="let carrera of listaCarreras" [value]="carrera">
+                            {{carrera}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="fill" style="margin-left: 35px;">
+                    <mat-label>Semestre</mat-label>
+                    <mat-select [disabled]="isLoading" formControlName="semestre" class="form-control" name="semestre">
+                        <mat-option *ngFor="let semestre of listaSemestres" [value]="semestre">
+                            {{semestre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="divInput">
+                <mat-icon class="icono" aria-label="Side nav toggle icon">pin</mat-icon>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Codigo</mat-label>
+                    <input [disabled]="isLoading" matInput formControlName="codigo" />
+                </mat-form-field>
+            </div>
+
+            <div class="divInput">
+                <mat-icon class="icono" aria-label="Side nav toggle icon">filter_5</mat-icon>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Promedio</mat-label>
+                    <input [disabled]="isLoading" matInput formControlName="promedio" />
+                </mat-form-field>
+            </div>
+
+            <div class="divInput">
+                <mat-icon class="icono" aria-label="Side nav toggle icon">email</mat-icon>
+                <mat-form-field class="input" appearance="fill">
+                    <mat-label>Correo</mat-label>
+                    <input [disabled]="isLoading" matInput formControlName="correo" />
+                </mat-form-field>
+            </div>
+        </form>
+        <mat-card-footer style="padding: 16px;">
+            <hr>
+            <button [disabled]="isLoading" class="button-atras" mat-raised-button color="default" (click)="irAtras()">
+                Atrás
+            </button>
+            <button *ngIf="!isModificate" [disabled]="isLoading" class="button-crear" mat-raised-button color="primary"
+                (click)="crearAlumno()">
+                <div style="color: white;" *ngIf="!isLoading; else proyectosTemplate">
+                    Crear
+                </div>
+                <ng-template #proyectosTemplate>
+                    <div style="padding-top: 12px; padding-bottom: 12px;padding-left: 50px;">
+                        <mat-spinner diameter="15"></mat-spinner>
+                    </div>
+                </ng-template>
+            </button>
+            <button *ngIf="isModificate" [disabled]="isLoading" class="button-crear" mat-raised-button color="primary"
+                (click)="modificarAlumno()">
+                <div style="color: white;" *ngIf="!isLoading; else proyectosTemplate">
+                    Modificar
+                </div>
+                <ng-template #proyectosTemplate>
+                    <div style="padding-top: 12px; padding-bottom: 12px;padding-left: 50px;">
+                        <mat-spinner diameter="15"></mat-spinner>
+                    </div>
+                </ng-template>
+            </button>
+        </mat-card-footer>
+    </mat-card>
+</div>
