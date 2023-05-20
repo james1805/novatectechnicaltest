@@ -1,4 +1,4 @@
 # Novatec Technical Test
-Prueba técnica Novatec (Fullstack)
+Prueba técnica Novatec (Java - Angular)
 
 
